@@ -4,6 +4,12 @@ import Home from './components/Home';
 import Header from './components/Layout/Header';
 import Footer from './components/Layout/Footer';
 import Courses from './components/Courses/Courses';
+import Login from "./components/Auth/Login";
+import Signup from "./components/Auth/Signup";
+import ForgetPassword from "./components/Auth/ForgetPassword";
+import ResetPassword from "./components/Auth/RestPassword";
+
+
 
 const App = () => {
   return (
