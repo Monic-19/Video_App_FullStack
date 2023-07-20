@@ -8,6 +8,7 @@ import Login from "./components/Auth/Login";
 import Signup from "./components/Auth/Signup";
 import ForgetPassword from "./components/Auth/ForgetPassword";
 import ResetPassword from "./components/Auth/RestPassword";
+import Contact from './components/Contact/Contact';
 
 
 
@@ -22,6 +23,9 @@ const App = () => {
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<Signup></Signup>}></Route>
         <Route path='/forgetpassword' element={<ForgetPassword></ForgetPassword>}></Route>
+        <Route path='/contact' element={<Contact></Contact>}></Route>
+
+
         <Route path='/resetpassword/:token' element={<ResetPassword></ResetPassword>}></Route>
 
 
