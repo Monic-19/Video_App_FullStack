@@ -7,10 +7,14 @@ import Courses from './components/Courses/Courses';
 import Login from "./components/Auth/Login";
 import Signup from "./components/Auth/Signup";
 import ForgetPassword from "./components/Auth/ForgetPassword";
-import ResetPassword from "./components/Auth/RestPassword";
+import ResetPassword from "./components/Auth/ResetPassword";
 import Contact from './components/Contact/Contact';
 import Request from './components/Request/Request';
 import About from './components/About/About';
+import Subscribe from './components/Payments/Subscribe';
+import PaymentSuccess from './components/Payments/PaymentSuccess';
+import PaymentFailure from './components/Payments/PaymentFailure';
+import NotFound from './components/Layout/NotFound';
 
 
 
@@ -28,10 +32,14 @@ const App = () => {
         <Route path='/contact' element={<Contact></Contact>}></Route>
         <Route path='/request' element={<Request></Request>}></Route>
         <Route path='/about' element={<About></About>}></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
 
 
         <Route path='/resetpassword/:token' element={<ResetPassword></ResetPassword>}></Route>
 
+        <Route path='/subscribe' element={<Subscribe></Subscribe>}></Route>
+        <Route path='/payment/success' element={<PaymentSuccess></PaymentSuccess>}></Route>
+        <Route path='/payment/fail' element={<PaymentFailure></PaymentFailure>}></Route>
 
       </Routes>
     <Footer></Footer>
