@@ -27,8 +27,8 @@ const CourseCard = ({views , title , imageSrc ,id, addToPlayListHandler,cerater,
         
 
         <Stack direction={["column" , "row"]} alignItems={"center"}>
-            <Link to={`/course/${id}`}> <Button colorScheme='yellow'>Watch Now</Button> </Link>
-            <Button colorScheme='yellow' variant={"ghost"} onClick={ () => {addToPlayListHandler(id)} }>Add To Playlist</Button>
+            <Link to={`/course/${id}`}> <Button colorScheme='green'>Watch Now</Button> </Link>
+            <Button colorScheme='green' variant={"ghost"} onClick={ () => {addToPlayListHandler(id)} }>Add To Playlist</Button>
         </Stack>
     </VStack>
   )

@@ -9,6 +9,8 @@ import Signup from "./components/Auth/Signup";
 import ForgetPassword from "./components/Auth/ForgetPassword";
 import ResetPassword from "./components/Auth/RestPassword";
 import Contact from './components/Contact/Contact';
+import Request from './components/Request/Request';
+import About from './components/About/About';
 
 
 
@@ -24,6 +26,8 @@ const App = () => {
         <Route path='/signup' element={<Signup></Signup>}></Route>
         <Route path='/forgetpassword' element={<ForgetPassword></ForgetPassword>}></Route>
         <Route path='/contact' element={<Contact></Contact>}></Route>
+        <Route path='/request' element={<Request></Request>}></Route>
+        <Route path='/about' element={<About></About>}></Route>
 
 
         <Route path='/resetpassword/:token' element={<ResetPassword></ResetPassword>}></Route>

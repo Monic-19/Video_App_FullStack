@@ -17,19 +17,21 @@ const Courses = () => {
     console.log(id , " added to playlist")
   }
 
+  console.log(category)
+
 
   return (
   <Container minH={"95vh"} maxW={"container.lg"} py={8}>
 
     <Heading children="All Courses" mb={8}></Heading>
 
-    <Input value={keyword} onChange={ e => setKeyword(e.target.value) } placeholder='Search a course...' type='text '></Input>
+    <Input value={keyword} onChange={ e => setKeyword(e.target.value) } placeholder='Search a course...' type='text ' focusBorderColor='green.500'></Input>
 
     <HStack overflowX={"auto"} padding={8} wrap={"wrap"} justifyContent={"center"}>
 
       {
         categories.map( (item ,index) => (
-          <Button m={2} colorScheme='yellow' variant={"outline"} key={index} onClick={() => {setCategory(item)}} minW={"60"}>
+          <Button m={2} colorScheme='green' variant={"outline"} key={index} onClick={() => {setCategory(item)}} minW={"60"}>
             <Text children={item}></Text>
           </Button>
         ))

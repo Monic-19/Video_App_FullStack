@@ -195,10 +195,10 @@ In order to resolve a complaint regarding the Site or to receive further informa
 
 Video Streaming
 asasddasd
-dasdasd, UP 4534534
+dasdasd, Noida 4534534
 India
 Phone: __________
-official.6packprogrammer@gmail.com
+monicvyas20@@gmail.com
 
 `;
 
