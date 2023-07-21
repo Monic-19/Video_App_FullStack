@@ -19,8 +19,8 @@ import Course from './components/CoursePage/CoursePage';
 import Profile from './components/Profile/Profile';
 import ChangePasswod from './components/Profile/ChangePasswod';
 import UpdateProfile from './components/Profile/UpdateProfile';
-import CreateCourse from "./components/Admin/CreateCourse/CreateCourse";
 
+import CreateCourse from "./components/Admin/CreateCourse/CreateCourse";
 import Dashboard from "./components/Admin/Dashboard/Dashboard"
 import AdminCourses from './components/Admin/AdminCourses/AdminCourses';
 import Users from './components/Admin/Users/Users';

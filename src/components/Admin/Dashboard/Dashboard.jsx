@@ -4,6 +4,7 @@ import cursor from "../../../assets/images/iconCursor.png";
 import Sidebar from "../Users/Sidebar"
 import Bar from './Bar';
 import DataBox from './DataBox';
+import { DoughnutChart, LineChart } from './Chart';
 
 const Dashboard = () => {
   return (
@@ -24,7 +25,8 @@ const Dashboard = () => {
 
           <Box m={[0, 16]} borderRadius={"lg"} p={[0, 16]} mt={[4, 16]} boxShadow={"-2px 0 10px rgba(107,70,193,0.5)"}>
             <Heading textAlign={["center", "left"]} size={"md"} pt={[8, 0]} ml={[0, 16]}>Views Graph</Heading>
-            {/* line graph */}
+           
+            <LineChart></LineChart>
           </Box>
 
           <Grid templateColumns={["1fr", "2fr 1fr"]}>
@@ -42,8 +44,7 @@ const Dashboard = () => {
 
               <Heading textAlign={"center"} size={"md"} mb={4} >Users</Heading>
               
-              {/* Donot Graps */}
-
+              <DoughnutChart></DoughnutChart>
             </Box>
 
           </Grid>
