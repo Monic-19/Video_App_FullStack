@@ -2,8 +2,8 @@ import { Box, Button, HStack, Heading, Image, Stack, Text, VStack } from '@chakr
 import React from 'react';
 import "./home.css";
 import { Link } from 'react-router-dom';
-import img1 from "../assets/images/bg.png";
-import video1 from "../assets/videos/intro.mp4"
+import img1 from "../../assets/images/bg.png";
+import video1 from "../../assets/videos/intro.mp4"
 import {CgGoogle, CgYoutube} from "react-icons/cg";
 import {SiCoursera , SiUdemy} from "react-icons/si";
 import {DiAws} from "react-icons/di";

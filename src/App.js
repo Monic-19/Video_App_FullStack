@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter ,Route ,Routes } from 'react-router-dom';
-import Home from './components/Home';
+import Home from './components/Home/Home';
 import Header from './components/Layout/Header';
 import Footer from './components/Layout/Footer';
 import Courses from './components/Courses/Courses';
@@ -19,7 +19,11 @@ import Course from './components/CoursePage/CoursePage';
 import Profile from './components/Profile/Profile';
 import ChangePasswod from './components/Profile/ChangePasswod';
 import UpdateProfile from './components/Profile/UpdateProfile';
+import CreateCourse from "./components/Admin/CreateCourse/CreateCourse";
 
+import Dashboard from "./components/Admin/Dashboard/Dashboard"
+import AdminCourses from './components/Admin/AdminCourses/AdminCourses';
+import Users from './components/Admin/Users/Users';
 
 
 const App = () => {
@@ -52,6 +56,13 @@ const App = () => {
         <Route path='/profile' element={<Profile></Profile>}></Route>
         <Route path='/profile/changepassword' element={<ChangePasswod></ChangePasswod>}></Route>
         <Route path='/profile/update' element={<UpdateProfile></UpdateProfile>}></Route>
+
+        {/* Admin Routes */}
+
+        <Route path='/admin/dashboard' element={<Dashboard></Dashboard>}></Route>
+        <Route path='/admin/courses' element={<AdminCourses></AdminCourses>}></Route>
+        <Route path='/admin/createcourse' element={<CreateCourse></CreateCourse>}></Route>
+        <Route path='/admin/users' element={<Users></Users>}></Route>
 
 
       </Routes>
