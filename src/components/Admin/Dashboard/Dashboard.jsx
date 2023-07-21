@@ -15,7 +15,7 @@ const Dashboard = () => {
         <Box boxSizing="border-box" py={16} px={[4, 0]}>
           <Text mt={20} mb={4} textAlign={"center"} opacity={0.5}> Last change was on {new Date().toDateString()} </Text>
 
-          <Heading ml={[0, 16]} mb={16} textAlign={["center", "left"]}>Dashboard</Heading>
+          <Heading ml={[0, 16]} mb={16} textAlign={["center", "left"]} textTransform={"uppercase"}>Dashboard</Heading>
 
           <Stack direction={["column", "row"]} minH={24} justifyContent={"space-evenly"}>
             <DataBox title={"views"} qty={123} qtyPercentage={29} profit={true}></DataBox>
