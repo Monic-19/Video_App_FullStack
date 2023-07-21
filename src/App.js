@@ -17,6 +17,8 @@ import PaymentFailure from './components/Payments/PaymentFailure';
 import NotFound from './components/Layout/NotFound';
 import Course from './components/CoursePage/CoursePage';
 import Profile from './components/Profile/Profile';
+import ChangePasswod from './components/Profile/ChangePasswod';
+import UpdateProfile from './components/Profile/UpdateProfile';
 
 
 
@@ -48,6 +50,8 @@ const App = () => {
         <Route path='/payment/fail' element={<PaymentFailure></PaymentFailure>}></Route>
 
         <Route path='/profile' element={<Profile></Profile>}></Route>
+        <Route path='/profile/changepassword' element={<ChangePasswod></ChangePasswod>}></Route>
+        <Route path='/profile/update' element={<UpdateProfile></UpdateProfile>}></Route>
 
 
       </Routes>

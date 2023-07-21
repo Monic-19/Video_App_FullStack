@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Container, HStack, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, VStack, useDisclosure, } from '@chakra-ui/react'
+import { Avatar, Button, Container, HStack, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, VStack, useDisclosure, } from '@chakra-ui/react'
 import React, { useState } from 'react'
 
 const ChangePhotoBox = ({changeImageSubmitHandler}) => {
