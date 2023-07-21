@@ -8,7 +8,7 @@ const Header = () => {
 
     const {isOpen,onOpen,onClose} =useDisclosure();
 
-    const isAuthenticated = false;
+    const isAuthenticated = true;
     const user = {
         role : "admin"
     }
@@ -22,11 +22,11 @@ const Header = () => {
     <div>
         <ColorModeSwitcher></ColorModeSwitcher>
       
-        <Button onClick={onOpen} colorScheme='yellow' width={12} height={12} rounded={10} position={"fixed"} top={6} left={6}>
+        <Button onClick={onOpen} colorScheme='yellow' width={12} height={12} rounded={10} position={"fixed"} top={6} left={6} zIndex={5}>
             <RiMenu5Fill></RiMenu5Fill>
         </Button>
 
-        <Drawer placement='left' isOpen={isOpen} onClose={onClose}>
+        <Drawer placement='left' isOpen={isOpen} onClose={onClose} >
             <DrawerOverlay backdropFilter={"blur(3px)"}></DrawerOverlay>
             <DrawerContent>
                 <DrawerHeader borderBottomWidth={"2px"}>COURSE BUNDLER</DrawerHeader>

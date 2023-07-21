@@ -15,10 +15,15 @@ import Subscribe from './components/Payments/Subscribe';
 import PaymentSuccess from './components/Payments/PaymentSuccess';
 import PaymentFailure from './components/Payments/PaymentFailure';
 import NotFound from './components/Layout/NotFound';
+import Course from './components/CoursePage/CoursePage';
+import Profile from './components/Profile/Profile';
 
 
 
 const App = () => {
+
+  // window.addEventListener("contextmenu" , (e) => {e.preventDefault()})
+
   return (
     <BrowserRouter>
     <Header></Header>
@@ -26,6 +31,7 @@ const App = () => {
 
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/courses' element={<Courses> </Courses>}></Route>
+        <Route path='/course/:id' element={<Course> </Course>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<Signup></Signup>}></Route>
         <Route path='/forgetpassword' element={<ForgetPassword></ForgetPassword>}></Route>
@@ -40,6 +46,9 @@ const App = () => {
         <Route path='/subscribe' element={<Subscribe></Subscribe>}></Route>
         <Route path='/payment/success' element={<PaymentSuccess></PaymentSuccess>}></Route>
         <Route path='/payment/fail' element={<PaymentFailure></PaymentFailure>}></Route>
+
+        <Route path='/profile' element={<Profile></Profile>}></Route>
+
 
       </Routes>
     <Footer></Footer>
