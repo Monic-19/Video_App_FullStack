@@ -83,3 +83,64 @@ export const getMyProfile = catchAsyncError(async (req, res, next) => {
     message: "user data send"
   })
 });
+
+
+export const changePassword = catchAsyncError(async (req, res, next) => {
+
+  const {oldPassword, newPassword} = req.body;
+
+  if( !oldPassword || !newPassword){
+    return next(new errorHandlerUtils("Plese enter all fields", 400));
+  }
+
+  const user =  await User.findById(req.user._id).select("+password");
+
+  const isMatch = await user.comparePassword(oldPassword);
+
+  if (!isMatch)
+    return next(new errorHandlerUtils("Incorrect old password", 401));
+
+  user.password= newPassword;
+
+  await user.save();
+
+
+  res.status(200).json({
+    success: true,
+    message: "Password changed Successfully"
+  })
+
+});
+
+
+
+export const updateProfile = catchAsyncError(async (req, res, next) => {
+
+  const {name,email} = req.body;
+
+  const user =  await User.findById(req.user._id).select("+password");
+
+  if(name) user.name=name;
+
+  if(email) user.email = email;
+
+  await user.save();
+
+
+  res.status(200).json({
+    success: true,
+    message: "Profile updated Successfully"
+  })
+
+});
+
+
+export const updateProfilePicture = catchAsyncError( async (req,res,next) => {
+
+  console.log("profile picture");
+  
+  res.status(200).json({
+    success: true,
+    message: "Profile picture updated Successfully"
+  })
+})

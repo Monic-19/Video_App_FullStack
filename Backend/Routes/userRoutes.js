@@ -1,5 +1,5 @@
 import express from "express"
-import { getAllUsers ,register  ,login ,logout ,getMyProfile} from "../Controllers/userController.js";
+import { getAllUsers ,register  ,login ,logout ,getMyProfile , changePassword, updateProfile, updateProfilePicture} from "../Controllers/userController.js";
 import { isAuthenticated } from "../Middlewares/auth.js";
 
 const router = express.Router();
@@ -18,8 +18,14 @@ router.route("/logout").get(logout);
 router.route("/me").get(isAuthenticated ,getMyProfile);
 
 // ChangePassword
+router.route("/changepassword").put(isAuthenticated ,changePassword);
+
 //  UpdateProfile
-// Update ProfilePicture
+router.route("/updateprofile").put(isAuthenticated ,updateProfile);
+
+// Update ProfilePicture  
+//cloudinary add karni hai
+router.route("/updateprofilepicture").put(isAuthenticated ,updateProfilePicture);
 
 // forget password
 //reset password

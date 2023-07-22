@@ -7,7 +7,7 @@ import { User } from "../Models/User.js";
 export const isAuthenticated = catchAsyncError( async (req,res,next) => {
     const {token }= req.cookies;
 
-    console.log(token )
+    // console.log(token )
 
   
     if(!token)
