@@ -58,7 +58,7 @@ const CreateCourse = () => {
                 }
               </Select>
 
-              <Input  accept='image/*' required id='chooseAvtar' placeholder='Choose Avtar..' type={'file'}
+              <Input  accept='image/*' required  placeholder='Choose Avtar..' type={'file'}
                    css={{
                          "&::file-selector-button" : {
                           cursor : "pointer",
