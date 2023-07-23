@@ -2,6 +2,9 @@ import { User } from "../Models/User.js";
 import { catchAsyncError } from "../Middlewares/catchAsyncError.js";
 import errorHandlerUtils from "../Utils/errorHandlerUtils.js";
 import { sendToken } from "../Utils/sendToken.js";
+import { sendEmail } from "../Utils/SendEmail.js";
+import crypto from "crypto"; 
+import { Course } from "../Models/Course.js";
 
 export const getAllUsers = (req, res, next) => {
   res.send("working too");
@@ -142,5 +145,121 @@ export const updateProfilePicture = catchAsyncError( async (req,res,next) => {
   res.status(200).json({
     success: true,
     message: "Profile picture updated Successfully"
+  })
+})
+
+
+export const forgetPassword = catchAsyncError( async (req,res,next) => {
+
+  const {email} = req.body;
+
+  const user = await User.findOne({email});
+
+  if(!user)
+     return next(new errorHandlerUtils("User doesnt exist",400))
+
+  const resetToken = await user.getResetToken();
+    //send token by mail
+
+  const url = `${process.env.FRONTEND_URL}/resetpassword/${resetToken}`;
+
+  const message = `Click on the link to reset your password. ${url}. If you haven't requested then please ignore.` 
+
+  await user.save();
+
+  await sendEmail(user.email , "Forgot Password" , message);
+
+  res.status(200).json({
+    success: true,
+    message: `Password has been sent to ${user.email}`
+  })
+})
+
+
+export const resetPassword = catchAsyncError( async (req,res,next) => {
+
+  const {token} = req.params;
+
+  const resetPasswordToken =  crypto.createHash("sha256").update(token).digest("hex");
+
+  const user = await User.findOne({
+    resetPasswordToken,
+    resetPasswordExpire : {
+      $gt : Date.now(),
+    },
+  })
+  
+  if(!user)
+  return next( new errorHandlerUtils("Token is invalid or has been expired", 401))
+        
+  user.password = req.body.password;
+
+  user.resetPasswordExpire = undefined;
+  user.resetPasswordToken = undefined;
+
+  await user.save();
+
+  res.status(200).json({
+    success: true,
+    message: "Password changed Successfully",
+    
+  })
+})
+
+
+export const addToPlaylist = catchAsyncError (async (req,res,next) => {
+
+  const  user = await User.findById(req.user._id);
+  const course = await Course.findById(req.body.id);
+
+  if(!course)
+  return next( new errorHandlerUtils("Invalid course id", 404));
+
+  const itemExist = user.playlist.find( (item) => {
+    if(item.course.toString() === course._id.toString())
+      return true;
+  } )
+
+  if(itemExist)
+  return next( new errorHandlerUtils("already added to playlist", 409));
+
+
+  user.playlist.push({
+    course : course._id,
+    poster: course.poster.url,
+  })
+  
+  await user.save();
+
+  res.status(200).json({
+    success: true,
+    message: "Course added to playlist",
+  })
+
+})
+
+
+
+export const removeFromPlaylist = catchAsyncError (async (req,res,next) => {
+
+  const  user = await User.findById(req.user._id);
+  const course = await Course.findById(req.body.id);
+
+  if(!course)
+  return next( new errorHandlerUtils("Invalid course id", 404));
+
+  const newPlaylist = user.playlist.filter( (item) => {
+    if(item.course.toString() !== course._id.toString())
+      return item
+  } )
+
+  user.playlist = newPlaylist;
+
+  
+  await user.save();
+
+  res.status(200).json({
+    success: true,
+    message: "Course removed from playlist",
   })
 })

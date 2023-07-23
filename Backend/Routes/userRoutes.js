@@ -1,5 +1,5 @@
 import express from "express"
-import { getAllUsers ,register  ,login ,logout ,getMyProfile , changePassword, updateProfile, updateProfilePicture} from "../Controllers/userController.js";
+import { getAllUsers ,register  ,login ,logout ,getMyProfile , changePassword, updateProfile, updateProfilePicture, forgetPassword, resetPassword, addToPlaylist, removeFromPlaylist} from "../Controllers/userController.js";
 import { isAuthenticated } from "../Middlewares/auth.js";
 
 const router = express.Router();
@@ -28,10 +28,16 @@ router.route("/updateprofile").put(isAuthenticated ,updateProfile);
 router.route("/updateprofilepicture").put(isAuthenticated ,updateProfilePicture);
 
 // forget password
+router.route("/forgetpassword").post(forgetPassword);
+
 //reset password
+router.route("/resetpassword/:token").put(resetPassword);
 
 //add to playlist
+router.route("/addtoplaylist").post(isAuthenticated,addToPlaylist);
+
 //remove from playlist
+router.route("/removefromplaylist").delete(isAuthenticated,removeFromPlaylist);
 
 
 
