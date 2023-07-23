@@ -1,12 +1,12 @@
 import express from "express"
-import { getAllUsers ,register  ,login ,logout ,getMyProfile , changePassword, updateProfile, updateProfilePicture, forgetPassword, resetPassword, addToPlaylist, removeFromPlaylist} from "../Controllers/userController.js";
-import { isAuthenticated } from "../Middlewares/auth.js";
+import { getAllUsers ,register  ,login ,logout ,getMyProfile , changePassword, updateProfile, updateProfilePicture, forgetPassword, resetPassword, addToPlaylist, removeFromPlaylist, updateUserRole, deleteUser, deleteMyProfile} from "../Controllers/userController.js";
+import { authorizeAdmin, isAuthenticated } from "../Middlewares/auth.js";
+import signleUpload from "../Middlewares/multer.js";
 
 const router = express.Router();
-router.route("/users").get(getAllUsers);
 
 // To register a new user
-router.route("/register").post(register);
+router.route("/register").post(signleUpload,register);
 
 //Login
 router.route("/login").post(login);
@@ -17,6 +17,9 @@ router.route("/logout").get(logout);
 //Get my profile
 router.route("/me").get(isAuthenticated ,getMyProfile);
 
+// Delete my profile
+router.route("/me").delete(isAuthenticated ,deleteMyProfile);
+
 // ChangePassword
 router.route("/changepassword").put(isAuthenticated ,changePassword);
 
@@ -24,8 +27,7 @@ router.route("/changepassword").put(isAuthenticated ,changePassword);
 router.route("/updateprofile").put(isAuthenticated ,updateProfile);
 
 // Update ProfilePicture  
-//cloudinary add karni hai
-router.route("/updateprofilepicture").put(isAuthenticated ,updateProfilePicture);
+router.route("/updateprofilepicture").put(isAuthenticated,signleUpload ,updateProfilePicture);
 
 // forget password
 router.route("/forgetpassword").post(forgetPassword);
@@ -40,6 +42,15 @@ router.route("/addtoplaylist").post(isAuthenticated,addToPlaylist);
 router.route("/removefromplaylist").delete(isAuthenticated,removeFromPlaylist);
 
 
+// Admin routes
 
+  //get all users
+  router.route("/admin/users").get(isAuthenticated,authorizeAdmin,getAllUsers);
+  
+  //change role 
+  router.route("/admin/user/:id").put(isAuthenticated,authorizeAdmin,updateUserRole);
+  
+  //delete user
+  router.route("/admin/user/:id").delete(isAuthenticated,authorizeAdmin,deleteUser);
 
 export default router; 

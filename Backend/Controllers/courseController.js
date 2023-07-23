@@ -138,13 +138,13 @@ export const deleteLecture = catchAsyncError( async(req,res,next) => {
 
     const course = await Course.findById(courseId);
 
-
+    
     let lecture =  course.lectures.filter( (item) => {
         if(item._id.toString() === lectureId.toString())
-          return item;
+        return item;
     } )
-
     // await cloudinary.v2.uploader.destroy(lecture.video.public_id ,{ resource_type : "video" });
+    
 
     course.lectures = course.lectures.filter( (item) => {
 
