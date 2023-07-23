@@ -19,3 +19,11 @@ export const isAuthenticated = catchAsyncError( async (req,res,next) => {
 
     next(); 
 })
+
+
+export const authorizeAdmin = catchAsyncError((req,res,next) => {
+   
+    if(req.user.role !== "admin")
+      return next(new errorHandlerUtils("You are not allowed to access this", 403))
+    next()
+})
