@@ -24,6 +24,9 @@ app.use("/api/v1",course);
 import user from "./Routes/userRoutes.js";
 app.use("/api/v1",user);
 
+import payment from "./Routes/paymentRoutes.js";
+app.use("/api/v1/",payment)
+
 export default app;
 
 app.use(errorMiddleware);
