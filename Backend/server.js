@@ -3,6 +3,8 @@ import app from "./app.js";
 import { connectDB } from "./Config/database.js";
 import cloudinary from "cloudinary";
 import RazorPay from "razorpay"; 
+import nodeCron from "node-cron";
+import { Stats } from "./Models/Stats.js";
 
 connectDB();
 
@@ -16,6 +18,22 @@ export var instance = new RazorPay({
     key_id: process.env.RAZ_API_KEY,
     key_secret: process.env.RAZ_API_SECRET,
   });
+
+
+nodeCron.schedule("0 0 0 1 * *",async () => {
+    try {
+        await Stats.create({})
+    } 
+    catch (error) {
+        console.log(error)
+    }
+})
+
+const temp = async()=> {
+    await Stats.create({})
+}
+
+// temp()
 
 app.listen(process.env.PORT , () => {
     console.log(`server started at ${process.env.PORT}`)

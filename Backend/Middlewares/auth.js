@@ -27,3 +27,11 @@ export const authorizeAdmin = catchAsyncError((req,res,next) => {
       return next(new errorHandlerUtils("You are not allowed to access this", 403))
     next()
 })
+
+
+export const authorizeSubscribers = catchAsyncError((req,res,next) => {
+   
+    if(req.user.subscription.status !== "active"  &&  req.user.role !== "admin")
+      return next(new errorHandlerUtils("Only subscribers can access this", 403))
+    next()
+})
